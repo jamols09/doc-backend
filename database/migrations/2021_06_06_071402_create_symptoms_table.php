@@ -18,6 +18,7 @@ class CreateSymptomsTable extends Migration
             $table->text('name');
             $table->text('description')->nullable();
             $table->date('occured_on')->nullable();
+            $table->integer('history_id')->nullable();
             $table->timestamps();
         });
     }

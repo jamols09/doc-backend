@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Address;
-
+use App\Models\History;
 class Patient extends Model
 {
     use HasFactory;
@@ -29,7 +29,12 @@ class Patient extends Model
         'telephone',
         'mobile'
     ];
-    //class Patient extends Model
+
+    public function history()
+    {
+        return $this->hasMany(History::class);
+    }
+    
     public function address()
     {
         return $this->hasMany(Address::class); //[Patient.id] & [Address.patient_id]
