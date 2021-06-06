@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class Symptoms extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'symptoms_id',
-        'diagnoses_id',
+        'name',
         'description',
-        'image',
+        'occured_on',
     ];
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHistoriesTable extends Migration
+class CreateSymptomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('symptoms', function (Blueprint $table) {
             $table->id();
-            $table->integer('symptoms_id')->nullable();
-            $table->integer('diagnoses_id')->nullable();
+            $table->text('name');
             $table->text('description')->nullable();
-            $table->string('image')->nullable(); //is usually scanned paper that have symptoms and diagnosis written
+            $table->date('occured_on')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('histories');
+        Schema::dropIfExists('symptoms');
     }
 }

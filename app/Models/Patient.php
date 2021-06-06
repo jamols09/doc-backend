@@ -29,10 +29,10 @@ class Patient extends Model
         'telephone',
         'mobile'
     ];
-
+    //class Patient extends Model
     public function address()
     {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(Address::class); //[Patient.id] & [Address.patient_id]
     }
 
     public function getFullNameAttribute()

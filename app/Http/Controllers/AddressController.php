@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PatientService;
+use App\Services\AddressService;
+
 use App\Models\Address;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
+
+    protected $patient;
+    protected $address;
+
+    public function __construct(PatientService $patientService, AddressService $addressService)
+    {
+        $this->patient = $patientService;
+        $this->address = $addressService;
+    }
     /**
      * Display a listing of the resource.
      *

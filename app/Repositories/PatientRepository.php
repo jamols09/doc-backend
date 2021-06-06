@@ -46,7 +46,6 @@ class PatientRepository
                 ->orWhere('referred_by','like','%'.$filter.'%')
                 ->orWhere('birthdate','like','%'.$filter.'%')
                 ->orWhere('telephone','like','%'.$filter.'%');
-                    
         } else {
             $page = $this->data->where($type,'like','%'.$filter.'%');
         }
