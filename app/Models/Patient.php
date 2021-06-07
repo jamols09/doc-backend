@@ -32,13 +32,14 @@ class Patient extends Model
 
     public function history()
     {
-        return $this->hasMany(History::class);
+        return $this->hasMany(History::class); //[History.patient_id] & [Patient.id]
     }
     
     public function address()
     {
-        return $this->hasMany(Address::class); //[Patient.id] & [Address.patient_id]
+        return $this->hasMany(Address::class); //[Address.patient_id] & [Patient.id]
     }
+    
 
     public function getFullNameAttribute()
     {
