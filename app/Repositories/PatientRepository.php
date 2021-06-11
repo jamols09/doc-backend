@@ -7,7 +7,7 @@ use App\Models\Patient;
 class PatientRepository
 {
 
-    protected $patient;
+    protected $data;
 
     public function __construct(Patient $data)
     {

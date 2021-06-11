@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Models\Address;
+use App\Models\Symptoms;
 
-class AddressRepository
+class SymptomRepository
 {
 
     protected $data;
 
-    public function __construct(Address $data)
+    public function __construct(Symptoms $data)
     {
         $this->data = $data;
     }
     
-    public function createAddress($data)
+    public function createSymptom($data)
     {
         return $this->data::create($data);
     }
