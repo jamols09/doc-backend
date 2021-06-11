@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AddressController;
-
+use App\Http\Controllers\SymptomsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,5 +34,7 @@ Route::domain('api.'.config('app.url'))->group(function () { //http://api.docmag
         Route::get('{patient}', [AddressController::class, 'show'])->name('address.show');
     });
 
-    // Route::post('register', [AuthController::class, 'register'])->name('register');
+    Route::prefix('symptoms')->group(function () {
+        Route::get('/', [SymptomsController::class, 'index'])->name('symptoms.index');
+    });
 });

@@ -23,6 +23,6 @@ class AddressService
 
     public function createAddress($data)
     {
-        return $this->addressRepository->create($data);
+        return $this->addressRepository->createAddress($data);
     }
 }
