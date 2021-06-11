@@ -18,6 +18,7 @@ class CreateDiagnosesTable extends Migration
             $table->text('name');
             $table->integer('physician_id')->nullable();
             $table->date('occured_on')->nullable();
+            $table->integer('history_id');
             $table->timestamps();
         });
     }
