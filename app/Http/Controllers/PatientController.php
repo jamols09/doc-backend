@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 use App\Services\PatientService;
 use App\Services\AddressService;
-
-use App\Models\Patient;
-use App\Models\Address;
-
 class PatientController extends Controller
 {
 

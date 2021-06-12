@@ -13,5 +13,6 @@ class Symptoms extends Model
         'name',
         'description',
         'occured_on',
+        'history_id'
     ];
 }

@@ -14,6 +14,7 @@ class History extends Model
     protected $fillable = [
         'description',
         'image',
+        'patient_id'
     ];
 
     public function symptoms()

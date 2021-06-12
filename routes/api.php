@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\SymptomsController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\DiagnosisController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -34,7 +36,15 @@ Route::domain('api.'.config('app.url'))->group(function () { //http://api.docmag
         Route::get('{patient}', [AddressController::class, 'show'])->name('address.show');
     });
 
-    Route::prefix('symptoms')->group(function () {
-        Route::get('/', [SymptomsController::class, 'index'])->name('symptoms.index');
+    Route::prefix('symptom')->group(function () {
+        // Route::post('/', [SymptomsController::class, 'index'])->name('symptoms.index');
+    });
+    
+    Route::prefix('diagnosis')->group(function () {
+        // Route::post('/', [DiagnosisController::class, 'index'])->name('diagnosis.index');
+    });
+
+    Route::prefix('history')->group(function () {
+        Route::post('/store', [HistoryController::class, 'store'])->name('history.store');
     });
 });

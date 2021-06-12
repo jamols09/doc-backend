@@ -13,5 +13,6 @@ class Diagnosis extends Model
         'name',
         'physician_id',
         'occured_on',
+        'history_id'
     ];
 }
