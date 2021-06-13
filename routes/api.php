@@ -28,23 +28,22 @@ Route::domain('api.'.config('app.url'))->group(function () { //http://api.docmag
 
     Route::prefix('patient')->group(function () {
         Route::get('/', [PatientController::class, 'index'])->name('patient.index');
-        Route::post('store', [PatientController::class, 'store'])->name('patient.store');
+        Route::post('/', [PatientController::class, 'store'])->name('patient.store');
         // Route::get('address/{patient}', [PatientController::class, 'address'])->name('patient.address');
+        Route::prefix('history')->group(function () {
+            Route::post('/', [HistoryController::class, 'store'])->name('history.store');
+            
+            Route::prefix('symptoms')->group(function () {
+                Route::post('/', [SymptomsController::class, 'store'])->name('symptoms.store');
+            });
+            
+            Route::prefix('diagnoses')->group(function () {
+                Route::post('/', [DiagnosisController::class, 'store'])->name('symptoms.store');
+            });
+        });
     });
 
     Route::prefix('address')->group(function () {
         Route::get('{patient}', [AddressController::class, 'show'])->name('address.show');
-    });
-
-    Route::prefix('symptom')->group(function () {
-        // Route::post('/', [SymptomsController::class, 'index'])->name('symptoms.index');
-    });
-    
-    Route::prefix('diagnosis')->group(function () {
-        // Route::post('/', [DiagnosisController::class, 'index'])->name('diagnosis.index');
-    });
-
-    Route::prefix('history')->group(function () {
-        Route::post('/store', [HistoryController::class, 'store'])->name('history.store');
     });
 });

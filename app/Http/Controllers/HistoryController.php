@@ -22,7 +22,7 @@ class HistoryController extends Controller
     public function index(Request $request)
     {
         try {
-            $result;
+            $result = '';
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
@@ -36,7 +36,7 @@ class HistoryController extends Controller
     {
         $validated = $request->validated();
         try {
-            $history = $this->history->createHistory($validated);
+            $result = $this->history->createHistory($validated);
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
