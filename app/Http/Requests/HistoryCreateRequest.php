@@ -23,19 +23,13 @@ class HistoryCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'description' => 'string|nullable',
             'image' => 'string|nullable',
-            'patient_id' => 'required',
-            'symptom.name' => 'string|nullable',
-            'symptom.date' => 'date|nullable',
-            'symptom.description' => 'string|max:500|nullable',
-            'symptom.occured_on' => 'date|nullable',
-            'diagnoses.name' => 'string|nullable',
-            'diagnoses.physician_id' => 'numeric|nullable',
-            'diagnoses.description' => 'string|nullable',
-            'diagnoses.occured_on' => 'date|nullable'
+            'patient_id' => 'required|numeric',
         ];
+
+        return $rules;
     }
 }
 

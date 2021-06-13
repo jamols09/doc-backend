@@ -16,8 +16,9 @@ class SymptomsController extends Controller
         $this->symptom = $symptom;
     }
 
-    public function index(SymptomsCreateRequest $request)
+    public function store(SymptomsCreateRequest $request)
     {
+        $validated = $request->validated();
         try {
             $result = $this->symptom->createSymptom($request);
         }

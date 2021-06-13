@@ -23,12 +23,15 @@ class SymptomsCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $result = [
             'name' => 'string|nullable',
             'description' => 'string|nullable',
             'occured_on' => 'nullable',
             'history_id' => 'numeric|required',
         ];
+        dd( $this->request->all());
+
+        return $result;
     }
 }
 
