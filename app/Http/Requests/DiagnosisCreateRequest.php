@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SymptomsCreateRequest extends FormRequest
+class DiagnosisCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class SymptomsCreateRequest extends FormRequest
     {
         return [
             'name' => 'string|nullable',
-            'description' => 'string|nullable',
+            'physician_id' => 'nullable',
             'occured_on' => 'nullable',
-            'history_id' => 'numeric|required',
+            'history_id' => 'numeric|required'
         ];
     }
 }

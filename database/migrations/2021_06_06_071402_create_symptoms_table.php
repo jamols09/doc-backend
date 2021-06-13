@@ -15,7 +15,7 @@ class CreateSymptomsTable extends Migration
     {
         Schema::create('symptoms', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
+            $table->text('name')->nullable();;
             $table->text('description')->nullable();
             $table->date('occured_on')->nullable();
             $table->integer('history_id')->nullable();
