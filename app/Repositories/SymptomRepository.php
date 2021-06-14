@@ -16,6 +16,10 @@ class SymptomRepository
     
     public function createSymptom($data)
     {
-        return $this->data::create($data);
+        $result = [];
+        foreach($data as $value) {
+            $result[] = $this->data::create($value)->id;
+        }
+        return $result;
     }
 }
