@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Symptom;
 
 use Illuminate\Foundation\Http\FormRequest;
-class SymptomsCreateRequest extends FormRequest
+class SymptomsCreateMultipleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,16 +20,14 @@ class SymptomsCreateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
-        $result = [
-            'name' => 'string|nullable',
-            'history_id' => 'numeric|required',
-            'description' => 'string|nullable',
-            'occured_on' => 'nullable',
+        return [
+            '*.name' => 'string|nullable',
+            '*.history_id' => 'nullable',
+            '*.description' => 'string|nullable',
+            '*.occured_on' => 'nullable',
         ];
-        
-        return $result;
     }
 }
 

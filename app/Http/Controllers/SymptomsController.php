@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SymptomsCreateRequest;
+use App\Http\Requests\Symptom\SymptomsCreateMultipleRequest;
 use Illuminate\Http\Request;
 
 use App\Services\SymptomService;
@@ -16,11 +17,11 @@ class SymptomsController extends Controller
         $this->symptom = $symptom;
     }
 
-    public function store(SymptomsCreateRequest $request)
+    public function store(SymptomsCreateMultipleRequest $request)
     {
         $validated = $request->validated();
         try {
-            $result = $this->symptom->createSymptom($request);
+            $result = $this->symptom->createSymptom($validated);
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
