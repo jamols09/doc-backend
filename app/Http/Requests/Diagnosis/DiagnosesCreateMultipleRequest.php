@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Symptom;
+namespace App\Http\Requests\Diagnosis;
 
 use Illuminate\Foundation\Http\FormRequest;
-class SymptomsCreateMultipleRequest extends FormRequest
+class DiagnosesCreateMultipleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,7 @@ class SymptomsCreateMultipleRequest extends FormRequest
             '*.history_id' => 'numeric|nullable',
             '*.description' => 'string|nullable',
             '*.occured_on' => 'nullable',
+            '*.physician_id' => 'numeric|nullable'
         ];
     }
 }

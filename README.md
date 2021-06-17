@@ -14,6 +14,7 @@ Quasar framework is used with vue in order to make the project PWA. Easier expor
 
 <ul>
     <li>Oliver Maglana</li>
+    <li>Adrian Jefferson Olape</li>
 </ul>
 
 <span style="font-size=8px;"> Hopefully I can get more developers here to speed-up development. Don't hate my code I'm not quite good at PHP and Vue (JS) but I have the passion to learn and work hard on project that I love more than my job.</span>

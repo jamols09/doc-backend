@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SymptomsCreateRequest;
 use App\Http\Requests\Symptom\SymptomsCreateMultipleRequest;
 use Illuminate\Http\Request;
 
