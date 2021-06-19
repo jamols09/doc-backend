@@ -27,6 +27,7 @@ class HistoryCreateRequest extends FormRequest
             'description' => 'string|nullable',
             'image' => 'string|nullable',
             'patient_id' => 'required|numeric',
+            'history_date' => 'string|nullable'
         ];
 
         return $rules;

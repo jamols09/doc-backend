@@ -18,6 +18,7 @@ class CreateHistoriesTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable(); //is usually scanned paper that have symptoms and diagnosis written should be cdn link
             $table->integer('patient_id');
+            $table->date('history_date')->nullable();
             $table->timestamps();
         });
     }
