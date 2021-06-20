@@ -18,4 +18,9 @@ class SymptomService
     {
         return $this->symptomRepository->createSymptom($data);
     }
+
+    public function getAllSymptoms()
+    {
+        return $this->symptomRepository->getAllSymptoms();
+    }
 }

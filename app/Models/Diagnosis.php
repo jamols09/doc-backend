@@ -11,8 +11,9 @@ class Diagnosis extends Model
 
     protected $fillable = [
         'name',
+        'description',
         'physician_id',
         'occured_on',
-        'history_id'
+        'history_id',
     ];
 }

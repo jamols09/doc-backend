@@ -22,4 +22,9 @@ class SymptomRepository
         }
         return $result;
     }
+
+    public function getAllSymptoms()
+    {
+        return $this->data::distinct()->where('name', '!=', null)->get(['name']);
+    }
 }

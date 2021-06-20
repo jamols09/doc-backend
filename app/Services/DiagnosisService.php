@@ -26,4 +26,8 @@ class DiagnosisService
         return $this->diagnosisRepository->createDiagnosis($data);
     }
     
+    public function getAllDiagnoses()
+    {
+        return $this->diagnosisRepository->getAllDiagnoses();
+    }
 }

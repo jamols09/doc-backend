@@ -24,10 +24,10 @@ class DiagnosesCreateMultipleRequest extends FormRequest
     {
         return [
             '*.name' => 'string|nullable',
-            '*.history_id' => 'numeric|nullable',
             '*.description' => 'string|nullable',
+            '*.physician_id' => 'numeric|nullable',
             '*.occured_on' => 'nullable',
-            '*.physician_id' => 'numeric|nullable'
+            '*.history_id' => 'numeric|nullable',           
         ];
     }
 }

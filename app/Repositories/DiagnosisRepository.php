@@ -22,4 +22,9 @@ class DiagnosisRepository
         }
         return $result;
     }
+
+    public function getAllDiagnoses()
+    {
+        return $this->data::distinct()->where('name', '!=', null)->get(['name']);
+    }
 }
