@@ -29,4 +29,16 @@ class DiagnosisController extends Controller
 
         return response()->json($result);
     }
+
+    public function dropdown() {
+        try {
+            $result = $this->diagnosis->getAllDiagnoses();
+        }
+        catch(\Throwable $e) {
+            \Log::error($e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+
+        return \response()->json($result);
+    }
 }

@@ -58,4 +58,14 @@ class PatientService
     {
         return $this->patientRepository->getPatientTable($data);
     }
+
+    public function createAvatar($data)
+    {
+        if($data->hasFile('avatar')) {
+            $name = 'avatar_'.$data->file('avatar')->getClientOriginalName();
+            $extension = '.jpeg';
+            $path = $data->file('avatar')->storeAs('avatar', $name.''.$extension, 'public');
+            return $this->patientRepository->createAvatar(['path' => '/public/' . $path, 'id' => $data['id'] ]);
+        }
+    }
 }

@@ -56,4 +56,9 @@ class PatientRepository
         
         return $page;
     }
+
+    public function createAvatar($data)
+    {
+        $this->data::where('id', $data['id'])->update(['avatar' => $data['path'] ]);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientCreateRequest;
+use App\Http\Requests\Patient\PatientAvatarRequest;
 use Illuminate\Http\Request;
 
 use App\Services\PatientService;
@@ -45,7 +46,7 @@ class PatientController extends Controller
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
 
-        return response()->json(['status' => 'success']);
+        return response()->json(['status' => 'success', 'id' => $patient->id]);
     }
 
     public function address($patient_id)
@@ -62,4 +63,15 @@ class PatientController extends Controller
         return response()->json(['status' => 'success', 'data' => $result]);
     }
 
+    // public function avatar(PatientAvatarRequest $request)
+    public function avatar(Request $request)
+    {
+        try {
+            $avatar = $this->patient->createAvatar($request);
+        }
+        catch(\Throwable $e) {
+            \Log::error($e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+    }
 }
