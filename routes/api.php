@@ -29,6 +29,7 @@ Route::domain('api.'.config('app.url'))->group(function () { //http://api.docmag
     Route::prefix('patient')->group(function () {
         Route::get('/', [PatientController::class, 'index'])->name('patient.index');
         Route::post('/', [PatientController::class, 'store'])->name('patient.store');
+        Route::post('/avatar', [PatientController::class, 'avatar'])->name('patient.avatar');
         // Route::get('address/{patient}', [PatientController::class, 'address'])->name('patient.address');
         Route::prefix('history')->group(function () {
             Route::post('/', [HistoryController::class, 'store'])->name('history.store');
