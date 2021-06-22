@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\PatientRepository;
+use Amazon;
 
 class PatientService
 {
@@ -20,7 +21,6 @@ class PatientService
      * @param  mixed $data
      * @return void
      */
-
     public function createPatient($data)
     {
         return $this->patientRepository->createPatient($data);
@@ -31,7 +31,6 @@ class PatientService
      *
      * @return void
      */
-
     public function getPatients()
     {
         return $this->patientRepository->getPatients();
@@ -58,14 +57,19 @@ class PatientService
     {
         return $this->patientRepository->getPatientTable($data);
     }
-
+    
+    /**
+     * Save patient avatar to AWS S3
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function createAvatar($data)
     {
         if($data->hasFile('avatar')) {
-            $name = 'avatar_'.$data->file('avatar')->getClientOriginalName();
-            $extension = '.jpeg';
-            $path = $data->file('avatar')->storeAs('avatar', $name.''.$extension, 'public');
-            return $this->patientRepository->createAvatar(['path' => '/public/' . $path, 'id' => $data['id'] ]);
+            $path = Amazon::saveAvatar($data);
+            $url = Amazon::getPathUrl($path);
+            return $this->patientRepository->createAvatar(['path' => $url, 'id' => $data['id'] ]);
         }
     }
 }
