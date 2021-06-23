@@ -63,7 +63,6 @@ class PatientController extends Controller
         return response()->json(['status' => 'success', 'data' => $result]);
     }
 
-    // public function avatar(PatientAvatarRequest $request)
     public function avatar(Request $request)
     {
         try {
@@ -73,5 +72,7 @@ class PatientController extends Controller
             \Log::error($e->getMessage());
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
+
+        return response()->json(['status' => 'success', 'data' => $avatar]);
     }
 }

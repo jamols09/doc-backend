@@ -33,7 +33,8 @@ Route::domain('api.'.config('app.url'))->group(function () { //http://api.docmag
         // Route::get('address/{patient}', [PatientController::class, 'address'])->name('patient.address');
         Route::prefix('history')->group(function () {
             Route::post('/', [HistoryController::class, 'store'])->name('history.store');
-            
+            Route::post('/file', [HistoryController::class, 'file'])->name('history.file');
+
             Route::prefix('symptoms')->group(function () {
                 Route::post('/', [SymptomsController::class, 'store'])->name('symptoms.store');
                 Route::get('/dropdown', [SymptomsController::class, 'dropdown'])->name('symptoms.dropdown');

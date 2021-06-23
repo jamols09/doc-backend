@@ -67,8 +67,7 @@ class PatientService
     public function createAvatar($data)
     {
         if($data->hasFile('avatar')) {
-            $path = Amazon::saveAvatar($data);
-            $url = Amazon::getPathUrl($path);
+            $url = Amazon::upload($data, 'avatar');
             return $this->patientRepository->createAvatar(['path' => $url, 'id' => $data['id'] ]);
         }
     }

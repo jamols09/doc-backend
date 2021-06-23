@@ -26,7 +26,7 @@ class HistoryController extends Controller
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getStatusCode()]);
         }
 
         return response()->json($result);
@@ -40,9 +40,21 @@ class HistoryController extends Controller
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getStatusCode()]);
         }
 
         return response()->json($result);
+    }
+
+    public function file(Request $request)
+    {
+        try {
+            $avatar = $this->history->createFile($request);
+        }
+        catch(\Throwable $e) {
+            \Log::error($e->getMessage());
+            \Log::error($e);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getStatusCode()]);
+        }
     }
 }

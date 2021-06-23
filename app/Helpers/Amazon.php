@@ -4,13 +4,17 @@ namespace App\Helpers;
 
 class Amazon
 {
-    public static function getPathUrl(string $path)
+    /**
+     * Upload file to Amazon
+     *
+     * @param  object $data
+     * @param  string $name
+     * @return void
+     */
+    
+    public static function upload($data, $name)
     {
+        $path = $data->file($name)->store($name, 's3');
         return \Storage::disk('s3')->url($path);
-    }
-
-    public static function saveAvatar($data)
-    {
-        return $data->file('avatar')->store('avatar', 's3');
     }
 }
