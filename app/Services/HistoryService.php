@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\HistoryRepository;
-
+use Amazon;
 class HistoryService
 {
 
@@ -25,5 +25,19 @@ class HistoryService
     {
         return $this->historyRepository->createHistory($data);
     }
-    
+        
+    /**
+     * Save file to amazon
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function createFile($data)
+    {
+        \Log::info($data);
+        if($data->hasFile('history')) {
+            $url = Amazon::upload($data, 'history');
+            return $this->historyRepository->createFile(['path' => $url, 'patient_id' => $data['patient_id'], 'id' => $data['id'] ]);
+        }
+    }
 }
