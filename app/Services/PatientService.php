@@ -71,4 +71,26 @@ class PatientService
             return $this->patientRepository->createAvatar(['path' => $url, 'id' => $data['id'] ]);
         }
     }
+    
+    /**
+     * Get patients list of diagnosis based on patient id
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getPatientsDiagnoses($data)
+    {
+        return $this->patientRepository->getPatientsDiagnoses($data);
+    }
+    
+    /**
+     * Get patients list of symptoms based on patient id
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getPatientsSymptoms($data)
+    {
+        return $this->patientRepository->getPatientsSymptoms($data);
+    }
 }

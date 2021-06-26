@@ -61,4 +61,14 @@ class PatientRepository
     {
         $this->data::where('id', $data['id'])->update(['avatar' => $data['path'] ]);
     }
+
+    public function getPatientsDiagnoses($data)
+    {
+        return $this->data::find($data['id'])->diagnoses;
+    }
+
+    public function getPatientsSymptoms($data)
+    {
+        return $this->data::find($data['id'])->symptoms;
+    }
 }

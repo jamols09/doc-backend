@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Address;
 use App\Models\History;
+use App\Models\Diagnosis;
+use App\Models\Symptoms;
 class Patient extends Model
 {
     use HasFactory;
@@ -40,6 +42,15 @@ class Patient extends Model
         return $this->hasMany(Address::class); //[Address.patient_id] & [Patient.id]
     }
     
+    public function diagnoses()
+    {
+        return $this->hasManyThrough(Diagnosis::class, History::class); //patient has many diagnosis through history
+    }
+
+    public function symptoms()
+    {
+        return $this->hasManyThrough(Symptoms::class, History::class); //patient has many symptoms through history
+    }
 
     public function getFullNameAttribute()
     {

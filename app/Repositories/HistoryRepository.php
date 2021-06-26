@@ -21,9 +21,9 @@ class HistoryRepository
 
     public function createFile($data)
     {
-        $this->data::where([
-            'patient_id' => $data['patient_id'],
-            'id' => $data['id']
-            ])->update(['image' => $data['path'] ]);
+        return $this->data::where([
+                'patient_id' => $data['patient_id'],
+                'id' => $data['id']
+                ])->update(['image' => $data['path'] ]);
     }
 }
