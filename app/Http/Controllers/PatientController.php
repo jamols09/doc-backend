@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientCreateRequest;
 use App\Http\Requests\Patient\PatientAvatarRequest;
+use App\Http\Requests\Patient\PatientIdRequest;
 use Illuminate\Http\Request;
 
 use App\Services\PatientService;
 use App\Services\AddressService;
+use App\Services\SymptomService;
+use App\Services\HistoryService;
+use App\Services\DiagnosisService;
 class PatientController extends Controller
 {
 
@@ -74,5 +78,29 @@ class PatientController extends Controller
         }
 
         return response()->json(['status' => 'success', 'data' => $avatar]);
+    }
+
+    public function patientsDiagnoses(PatientIdRequest $request)
+    {
+        $validated = $request->validated();
+        try {
+            $result = $this->patient->getPatientsDiagnoses($validated);
+        }
+        catch(\Throwable $e) {
+            \Log::error($e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function patientsSymptoms(PatientIdRequest $request)
+    {
+        $validated = $request->validated();
+        try {
+            $result = $this->history->getPatientsSymptoms($validated);
+        }
+        catch(\Throwable $e) {
+            \Log::error($e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

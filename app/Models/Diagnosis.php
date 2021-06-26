@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\History;
 class Diagnosis extends Model
 {
     use HasFactory;
@@ -16,4 +17,9 @@ class Diagnosis extends Model
         'occured_on',
         'history_id',
     ];
+
+    public function history()
+    {
+        return $this->belongsTo(History::class);
+    }
 }

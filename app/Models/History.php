@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Symptoms;
 use App\Models\Diagnosis;
+use App\Models\Patient;
 class History extends Model
 {
     use HasFactory;
@@ -25,5 +26,10 @@ class History extends Model
     public function diagnoses()
     {
         return $this->hasMany(Diagnosis::class); //[Diagnosis.history_id] & [History.id]
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
     }
 }

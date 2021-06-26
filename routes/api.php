@@ -30,19 +30,22 @@ Route::domain('api.'.config('app.url'))->group(function () { //http://api.docmag
         Route::get('/', [PatientController::class, 'index'])->name('patient.index');
         Route::post('/', [PatientController::class, 'store'])->name('patient.store');
         Route::post('/avatar', [PatientController::class, 'avatar'])->name('patient.avatar');
-        // Route::get('address/{patient}', [PatientController::class, 'address'])->name('patient.address');
+        
+        Route::get('{patient}/history/diagnoses', [PatientController::class, 'patientsDiagnoses'])->name('patient.history.diagnoses');
+        Route::get('{patient}/history/symptoms', [PatientController::class, 'patientsSymptoms'])->name('patient.history.symptoms');
+
         Route::prefix('history')->group(function () {
             Route::post('/', [HistoryController::class, 'store'])->name('history.store');
             Route::post('/file', [HistoryController::class, 'file'])->name('history.file');
 
             Route::prefix('symptoms')->group(function () {
                 Route::post('/', [SymptomsController::class, 'store'])->name('symptoms.store');
-                Route::get('/dropdown', [SymptomsController::class, 'dropdown'])->name('symptoms.dropdown');
+                Route::get('/', [SymptomsController::class, 'dropdown'])->name('patient.symptoms.dropdown');
             });
             
             Route::prefix('diagnoses')->group(function () {
                 Route::post('/', [DiagnosisController::class, 'store'])->name('diagnosis.store');
-                Route::get('/dropdown', [DiagnosisController::class, 'dropdown'])->name('diagnosis.dropdown');
+                Route::get('/', [DiagnosisController::class, 'dropdown'])->name('patient.diagnoses.dropdown');
             });
         });
     });
