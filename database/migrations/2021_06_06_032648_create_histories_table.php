@@ -16,7 +16,7 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->text('description')->nullable();
-            $table->string('image')->nullable(); //is usually scanned paper that have symptoms and diagnosis written should be cdn link
+            $table->string('file')->nullable(); //is usually scanned paper that have symptoms and diagnosis written should be cdn link
             $table->integer('patient_id');
             $table->date('history_date')->nullable();
             $table->timestamps();

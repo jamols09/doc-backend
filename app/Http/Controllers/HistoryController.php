@@ -26,7 +26,7 @@ class HistoryController extends Controller
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
-            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getStatusCode()]);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
 
         return response()->json($result);
@@ -40,7 +40,7 @@ class HistoryController extends Controller
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
-            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getStatusCode()]);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
 
         return response()->json($result);
@@ -54,7 +54,7 @@ class HistoryController extends Controller
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
             \Log::error($e);
-            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getStatusCode()]);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
     }
 }

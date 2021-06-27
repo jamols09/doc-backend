@@ -90,17 +90,31 @@ class PatientController extends Controller
             \Log::error($e->getMessage());
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
+        return response()->json($result);
     }
 
     public function patientsSymptoms(PatientIdRequest $request)
     {
         $validated = $request->validated();
         try {
-            $result = $this->history->getPatientsSymptoms($validated);
+            $result = $this->patient->getPatientsSymptoms($validated);
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
+        return response()->json($result);
+    }
+
+    public function patientFiles(PatientIdRequest $request)
+    {
+        try {
+            $result = $this->patient->getPatientsFiles($request);
+        }
+        catch(\Throwable $e) {
+            \Log::error($e->getMessage());
+            return response()->json(['status' => 'error', 'message' => $e->getMessage(), $e->getCode()]);
+        }
+        return response()->json($result);
     }
 }
