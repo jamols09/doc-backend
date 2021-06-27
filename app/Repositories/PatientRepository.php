@@ -71,4 +71,9 @@ class PatientRepository
     {
         return $this->data::find($data['id'])->symptoms;
     }
+
+    public function getPatientsFiles($data)
+    {
+        return $this->data::find($data['id'])->history->where('file', '!=', null);
+    }
 }

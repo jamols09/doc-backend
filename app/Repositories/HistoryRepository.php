@@ -24,6 +24,6 @@ class HistoryRepository
         return $this->data::where([
                 'patient_id' => $data['patient_id'],
                 'id' => $data['id']
-                ])->update(['image' => $data['path'] ]);
+                ])->update(['file' => $data['path'] ]);
     }
 }

@@ -93,4 +93,15 @@ class PatientService
     {
         return $this->patientRepository->getPatientsSymptoms($data);
     }
+    
+    /**
+     * Get patients files from history
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getPatientsFiles($data)
+    {
+        return $this->patientRepository->getPatientsFiles($data);
+    }
 }
