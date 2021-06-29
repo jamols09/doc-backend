@@ -53,7 +53,6 @@ class HistoryController extends Controller
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());
-            \Log::error($e);
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
     }

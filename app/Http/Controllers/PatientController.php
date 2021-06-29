@@ -108,8 +108,9 @@ class PatientController extends Controller
 
     public function patientFiles(PatientIdRequest $request)
     {
+        $validated = $request->validated();
         try {
-            $result = $this->patient->getPatientsFiles($request);
+            $result = $this->patient->getPatientsFiles($validated);
         }
         catch(\Throwable $e) {
             \Log::error($e->getMessage());

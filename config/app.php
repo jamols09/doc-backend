@@ -227,6 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Carbon' => Illuminate\Support\Carbon::class,
         //Custom Helper Classes Converted to Global namespaced function
         'Amazon' => App\Helpers\Amazon::class,
     ],
