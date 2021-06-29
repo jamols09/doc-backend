@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 use App\Models\Symptoms;
 use App\Models\Diagnosis;
@@ -15,7 +16,12 @@ class History extends Model
     protected $fillable = [
         'description',
         'image',
-        'patient_id'
+        'patient_id',
+        'history_date'
+    ];
+
+    protected $appends = [
+        'created_at_formatted'
     ];
 
     public function symptoms()
@@ -31,5 +37,14 @@ class History extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        if($this->history_date) 
+        {
+            return Carbon::createFromFormat('Y-m-d H:i:s', $this->history_date)->format('M d Y');
+        }
+        return Carbon::createFromFormat('Y-m-d H:i:s',$this->created_at)->format('M d Y');
     }
 }
