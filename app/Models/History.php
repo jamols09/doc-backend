@@ -43,7 +43,7 @@ class History extends Model
     {
         if($this->history_date) 
         {
-            return Carbon::createFromFormat('Y-m-d H:i:s', $this->history_date)->format('M d Y');
+            return Carbon::createFromFormat('Y-m-d', $this->history_date)->format('M d Y');
         }
         return Carbon::createFromFormat('Y-m-d H:i:s',$this->created_at)->format('M d Y');
     }

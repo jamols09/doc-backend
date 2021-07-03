@@ -36,7 +36,7 @@ class HistoryService
     {
         if($data->hasFile('history')) {
             $url = Amazon::upload($data, 'history');
-            return $this->historyRepository->createFile(['path' => $url, 'patient_id' => $data['patient_id'], 'id' => $data['id'] ]);
+            return $this->historyRepository->createFile(['path' => $url, 'patient_id' => $data['patient_id'], 'history_date' => $data['history_date'], 'id' => $data['id'] ]);
         }
     }
 }
