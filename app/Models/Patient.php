@@ -9,6 +9,7 @@ use App\Models\Address;
 use App\Models\History;
 use App\Models\Diagnosis;
 use App\Models\Symptoms;
+use App\Models\Prescription;
 class Patient extends Model
 {
     use HasFactory;
@@ -50,6 +51,11 @@ class Patient extends Model
     public function symptoms()
     {
         return $this->hasManyThrough(Symptoms::class, History::class); //patient has many symptoms through history
+    }
+
+    public function prescription()
+    {
+        return $this->hasMany(Prescription::class);
     }
 
     public function getFullNameAttribute()
